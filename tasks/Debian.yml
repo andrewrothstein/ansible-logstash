@@ -1,0 +1,21 @@
+---
+- name: add elastic search key for logstash
+  apt_key: url='https://packages.elastic.co/GPG-KEY-elasticsearch' state=present
+
+- name: install apt source
+  register: logstash_apt_list_added
+  template: >-
+    src=etc/apt/sources.list.d/logstash.list
+    dest=/etc/apt/sources.list.d/logstash.list
+    owner=root
+    group=root
+    mode=0644
+
+- name: apt-get update...
+  when: logstash_apt_list_added
+  apt: update_cache=yes
+
+- name: install logstash
+  apt: name=logtash state=latest
+  
+    
