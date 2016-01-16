@@ -1,6 +1,6 @@
 ---
 - name: add elastic search key for logstash
-  apt_key: url='https://packages.elastic.co/GPG-KEY-elasticsearch' state=present
+  apt_key: url='https://packages.elastic.co/GPG-KEY-elasticsearch' state=present id=D88E42B4
 
 - name: install apt source
   register: logstash_apt_list_added

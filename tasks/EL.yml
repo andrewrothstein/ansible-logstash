@@ -12,3 +12,12 @@
     
 - name: install logstash
   yum: name=logstash state=latest
+
+- name: add logstash to the default path
+  copy: >-
+    src=etc/profile.d/logstash.sh
+    dest=/etc/profile.d/logstash.sh
+    owner=root
+    group=root
+    mode=644
+    
