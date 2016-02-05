@@ -16,4 +16,4 @@
     mode=0644
 
 - name: boot logstash service
-  service: name=logstash enabled=yes state=restarted
+  service: name=logstash enabled=yes state=started
