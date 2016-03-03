@@ -16,4 +16,4 @@
   apt: update_cache=yes
 
 - name: install logstash
-  apt: name=logtash state=present
+  apt: name=logstash state=present
