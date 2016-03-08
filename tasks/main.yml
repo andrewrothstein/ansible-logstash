@@ -14,8 +14,7 @@
     owner=root
     group=root
     mode=0644
-  with_items: 
-    - "{{config_files | to_json}}"
+  with_items:  "{{config_files}}"
 
 - name: boot logstash service
   service: name=logstash enabled=yes state=started
