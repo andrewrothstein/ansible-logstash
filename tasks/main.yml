@@ -9,11 +9,13 @@
 
 - name: configure...
   template: >-
-    src=etc/logstash/conf.d/logstash.conf.j2
-    dest=/etc/logstash/conf.d/logstash.conf
+    src=etc/logstash/conf.d/{{item}}.j2
+    dest=/etc/logstash/conf.d/{{item}}
     owner=root
     group=root
     mode=0644
+  with_items: 
+    - "{{config_files | to_json}}"
 
 - name: boot logstash service
   service: name=logstash enabled=yes state=started

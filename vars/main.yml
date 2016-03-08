@@ -1,2 +1,6 @@
 ---
 # vars file for logstash
+config_files : 
+  - collectd.conf
+  - syslog.conf
+  - output.conf
