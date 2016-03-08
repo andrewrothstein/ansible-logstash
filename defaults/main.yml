@@ -2,3 +2,4 @@
 # defaults file for logstash
 logstash_ver : '2.2'
 collectd_network_port : 25826
+syslog_network_port : 50514

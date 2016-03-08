@@ -1,0 +1,8 @@
+input {
+  udp {
+    port => {{collectd_network_port}} # This matches port specified in collectd.conf
+    buffer_size => 1452   # 1452 is the default buffer size for Collectd
+    codec => collectd { } # specific Collectd codec to invoke
+    type => collectd
+  }
+}

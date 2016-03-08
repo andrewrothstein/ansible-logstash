@@ -1,0 +1,5 @@
+output {
+  elasticsearch {
+    hosts => {% if groups['elasticsearch'] is defined %}[{% for host in groups['elasticsearch'] %}"{{hostvars[host]['ansible_default_ipv4']['address']}}"{% if not loop.last %},{% endif %}{% endfor %}]{% else %}localhost{% endif %}
+  }
+}
