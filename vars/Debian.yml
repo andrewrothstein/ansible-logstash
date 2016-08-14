@@ -1,0 +1,3 @@
+---
+logstash_templates:
+  - etc/apt/sources.list.d/logstash.list
