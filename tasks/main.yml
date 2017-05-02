@@ -2,58 +2,46 @@
 - name: resolve platform specific vars
   include_vars: "{{item}}"
   with_first_found:
-    - "{{ansible_distribution}}-{{ansible_distribution_release}}.yml"
-    - "{{ansible_distribution}}.yml"
-    - "{{ansible_os_family}}.yml"
+    - files:
+        - "{{ansible_distribution}}-{{ansible_distribution_release}}.yml"
+        - "{{ansible_distribution}}.yml"
+        - "{{ansible_os_family}}.yml"
+      skip: true
+      paths:
+        - '{{role_path}}/vars'
 
-- name: add elastic key
-  when: ansible_os_family == 'RedHat'
+- name: download...
   become: yes
   become_user: root
-  rpm_key: >
-    key=https://packages.elastic.co/GPG-KEY-elasticsearch
-    state=present
+  get_url:
+    url: '{{logstash_tgz_url}}'
+    dest: /tmp/{{logstash_tgz}}
+    mode: 0644
 
-- name: add elastic key
-  when: ansible_os_family == 'Debian'
+- name: unarchive...
   become: yes
   become_user: root
-  apt_key: >
-    url=https://packages.elastic.co/GPG-KEY-elasticsearch
-    id=D88E42B4
-    state=present
+  unarchive:
+    copy: no
+    src: /tmp/{{logstash_tgz}}
+    dest: '{{logstash_parent_install_dir}}'
+    creates: '{{logstash_install_dir}}'
 
-- name: setup pkg mgr
+- name: link...
   become: yes
   become_user: root
-  register: logstash_pkg_mgr_configured
-  with_items: '{{logstash_templates}}'
-  template: >-
-    src={{item}}.j2
-    dest=/{{item}}
-    mode=0644
+  file:
+    src: '{{logstash_install_dir}}'
+    dest: '{{logstash_link_dir}}'
+    state: link
 
-- name: update pkg mgr
+- name: add to default path...
   become: yes
   become_user: root
-  when: ansible_os_family == 'Debian' and logstash_pkg_mgr_configured|changed
-  apt: update_cache=yes
-
-- name: install logstash
-  become: yes
-  become_user: root
-  package: name=logstash state=present
-
-- name: configure...
-  become: yes
-  become_user: root
-  with_items: '{{config_files}}'
-  template: >-
-    src=etc/logstash/conf.d/{{item}}.j2
-    dest=/etc/logstash/conf.d/{{item}}
-    mode=0644
-
-- name: boot logstash service
-  become: yes
-  become_user: root
-  service: name=logstash enabled=yes state=started
+  with_items:
+    - f: logstash.sh
+      d: /etc/profile.d
+  template:
+    src: '{{item.f}}.j2'
+    dest: '{{item.d}}/{{item.f}}'
+    mode: '{{item.m|default("0644")}}'

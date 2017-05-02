@@ -1,6 +1,7 @@
 ---
-# vars file for logstash
-config_files : 
-  - collectd.conf
-  - syslog.conf
-  - output.conf
+logstash_name: logstash-{{logstash_ver}}
+logstash_tgz: '{{logstash_name}}.tar.gz'
+logstash_tgz_url: '{{logstash_mirror}}/{{logstash_tgz}}'
+
+logstash_install_dir: '{{logstash_parent_install_dir}}/{{logstash_name}}'
+logstash_link_dir: '{{logstash_parent_install_dir}}/logstash'
