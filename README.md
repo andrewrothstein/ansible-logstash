@@ -2,7 +2,7 @@ andrewrothstein.logstash
 =============================
 [![Build Status](https://travis-ci.org/andrewrothstein/ansible-logstash.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-logstash)
 
-Installs [Logstash](https://www.elastic.co/products/logstash)
+Installs [Logstash](https://www.elastic.co/products/logstash).
 
 Requirements
 ------------
