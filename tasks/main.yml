@@ -16,6 +16,7 @@
   get_url:
     url: '{{logstash_tgz_url}}'
     dest: /tmp/{{logstash_tgz}}
+    checksum: '{{logstash_checksum}}'
     mode: 0644
 
 - name: unarchive...
