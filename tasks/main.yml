@@ -23,7 +23,7 @@
   become: yes
   become_user: root
   unarchive:
-    remote_src: no
+    remote_src: yes
     src: /tmp/{{logstash_tgz}}
     dest: '{{logstash_parent_install_dir}}'
     creates: '{{logstash_install_dir}}'
