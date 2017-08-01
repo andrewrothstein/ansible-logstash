@@ -46,3 +46,11 @@
     src: '{{item.f}}.j2'
     dest: '{{item.d}}/{{item.f}}'
     mode: '{{item.m|default("0644")}}'
+
+- name: cleanup...
+  become: yes
+  become_user: root
+  when: logstash_cleanup
+  file:
+    path: /tmp/{{logstash_tgz}}
+    state: absent
