@@ -1,9 +1,9 @@
 ---
-logstash_ver : '5.5.1'
+logstash_ver : '5.5.2'
 logstash_mirror: https://artifacts.elastic.co/downloads/logstash
 
-# https://artifacts.elastic.co/downloads/logstash/logstash-5.5.1.tar.gz
-logstash_checksum: sha256:6690bc5a69943e223e6cf896beba7cf01c51a6c864b161fbbc7185b26a21ba55
+# https://artifacts.elastic.co/downloads/logstash/logstash-5.5.2.tar.gz
+logstash_checksum: sha256:95845b89964300a5596c0ba3966c48d4980524d741a9cd2b13e04a36e3e1d912
 
 logstash_parent_install_dir: /usr/local
 
