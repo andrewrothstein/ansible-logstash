@@ -1,5 +1,5 @@
 ---
-logstash_ver: '6.5.2'
+logstash_ver: '6.6.2'
 logstash_mirror: https://artifacts.elastic.co/downloads/logstash
 
 logstash_checksums:
@@ -30,5 +30,7 @@ logstash_checksums:
   '6.5.1': sha256:bf3901c6717a2967bd08915a88e3611ed5d22263722d462e8da30e935d5ab306
   # https://artifacts.elastic.co/downloads/logstash/logstash-6.5.2.tar.gz
   '6.5.2': sha256:0e8b04b3e84d69bd9155f31a3bb8cda1ae7a8605dfa209fdf4f42364ae693340
+  # https://artifacts.elastic.co/downloads/logstash/logstash-6.6.2.tar.gz
+  '6.6.2': sha256:4ff1a532a5dd41cc7249840a4f74f332c05d4efdb67c0fe7e8b1c0d9c3c505d0
 
 logstash_parent_install_dir: /usr/local
