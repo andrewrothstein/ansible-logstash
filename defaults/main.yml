@@ -1,5 +1,5 @@
 ---
-logstash_ver: '7.1.0'
+logstash_ver: '7.1.1'
 logstash_mirror: https://artifacts.elastic.co/downloads/logstash
 
 logstash_checksums:
@@ -38,5 +38,7 @@ logstash_checksums:
   '7.0.0': sha512:2a1c114daf117bc6b18e5409f09d6d1b862f9c672f75659dc7c7f00c3f6d3561244f3262af319ba9431a44171397514a499a21673c3d619e99c8f2c2a8820200
   # https://artifacts.elastic.co/downloads/logstash/logstash-7.1.0.tar.gz.sha512
   '7.1.0': sha512:afb19f10b160a45e19ba8797a8f47f88957349cc26d9c172721761afa58d9b16b5b5eb2e1d6c5191cc2a402738609e25d8fe84d970a87ec0cf7f6ad3eeb661f8
+  # https://artifacts.elastic.co/downloads/logstash/logstash-7.1.1.tar.gz.sha512
+  '7.1.1': sha512:11b0678342b70a8665b5143ba200edde911efb70a72eed64f22e20da91e53548bb1952f8cabdf9bff5ead89a0a83c24ab0a21907b5117973fdd298c660cdbbcb
 
 logstash_parent_install_dir: /usr/local
