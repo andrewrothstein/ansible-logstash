@@ -1,7 +1,14 @@
 #!/usr/bin/env sh
-VER=7.3.0
+
 DIR=~/Downloads
 APP=logstash
-URL=https://artifacts.elastic.co/downloads/${APP}/${APP}-${VER}.tar.gz.sha512
-printf "  # %s\n" $URL
-printf "  '%s': sha512:%s\n" $VER $(curl -sSL $URL | awk '{print $1}')
+MIRROR=https://artifacts.elastic.co/downloads/${APP}
+
+dl_ver() {
+    ver=$1
+    local url=https://artifacts.elastic.co/downloads/${APP}/${APP}-${ver}.tar.gz.sha512
+    printf "  # %s\n" $url
+    printf "  '%s': sha512:%s\n" $ver $(curl -sSL $url | awk '{print $1}')
+}
+
+dl_ver ${1:-7.4.2}

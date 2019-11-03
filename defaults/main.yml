@@ -1,6 +1,8 @@
 ---
-logstash_ver: '7.3.0'
+logstash_ver: '7.4.2'
 logstash_mirror: https://artifacts.elastic.co/downloads/logstash
+
+logstash_parent_install_dir: /usr/local
 
 logstash_checksums:
   '6.0.1': sha256:537c127fa61488d7fbdac3829465458ec1a5d7bbf556fcdb1e9b5a0b57dea496
@@ -44,6 +46,9 @@ logstash_checksums:
   '7.2.0': sha512:955358d504b6626ba9ac88a2d65b161044180c3085f8dbaedfb8b85b092ecc65721bbda73b750f7d8b78a052828a54f7ed7ad16ee7ec72f3ed5e428ba291a173
   # https://artifacts.elastic.co/downloads/logstash/logstash-7.3.0.tar.gz.sha512
   '7.3.0': sha512:0e99a106d462d31e79688e9860006f4764e05fd8bad97569535f66154c6f3a32d6d90d8645d691820344290ba5a0d66c3a1865c48502b87cd5247a3adb1b907f
-
-
-logstash_parent_install_dir: /usr/local
+  # https://artifacts.elastic.co/downloads/logstash/logstash-7.4.0.tar.gz.sha512
+  '7.4.0': sha512:4bfce16769c9d5deceb24cf4e304966fba3b8f92af69c98407a88159012c7de6305f4a9fcff7ebea49b3c4c271d5cd51b2638ca1780d654643a364c8d369be05
+  # https://artifacts.elastic.co/downloads/logstash/logstash-7.4.1.tar.gz.sha512
+  '7.4.1': sha512:c89d530f16e5c6953d97708b6ff2f46bbb518a93652f11cad988841a73bf5862beb4a5326de1e63d0ffb65a498fc33235ab4fc950e8087aed5815b3a65e81ef6
+  # https://artifacts.elastic.co/downloads/logstash/logstash-7.4.2.tar.gz.sha512
+  '7.4.2': sha512:3ffedd75ad1137565cbb5f13e1c65113d58d4ba49e70d64d287421fe0cb2f71bd81d27a5b5cb9c52fbf513ef5bd6de582ba7db7268ba2c5d910712b51d4409b1
