@@ -1,6 +1,7 @@
 ---
 logstash_name: logstash-{{ logstash_ver }}
 logstash_tgz: '{{ logstash_name }}.tar.gz'
+logstash_tmp_tgz: /tmp/{{ logstash_tgz }}
 logstash_tgz_url: '{{ logstash_mirror }}/{{ logstash_tgz }}'
 logstash_checksum: '{{ logstash_checksums[logstash_ver] }}'
 

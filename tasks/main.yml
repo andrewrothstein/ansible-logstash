@@ -9,7 +9,7 @@
       skip: true
       paths:
         - '{{ role_path }}/vars'
-- name: check for logstash installation
+- name: checking for logstash installation in {{ logstash_install_dir }}
   become: yes
   stat:
     path: '{{ logstash_install_dir }}'
@@ -17,31 +17,31 @@
   register: logstash_binary_dir
 - when: not logstash_binary_dir.stat.exists
   block:
-    - name: download...
+    - name: downloading {{ logstash_tgz_url }}
       become: yes
       become_user: root
       get_url:
         url: '{{ logstash_tgz_url }}'
-        dest: /tmp/{{ logstash_tgz }}
+        dest: '{{ logstash_tmp_tgz }}'
         checksum: '{{ logstash_checksum }}'
         mode: 0644
-    - name: unarchive...
+    - name: unarchiving to {{ logstash_parent_install_dir }}
       become: yes
       become_user: root
       unarchive:
         remote_src: yes
-        src: /tmp/{{ logstash_tgz }}
+        src: '{{ logstash_tmp_tgz }}'
         dest: '{{ logstash_parent_install_dir }}'
         creates: '{{ logstash_install_dir }}'
   always:
-    - name: cleanup...
+    - name: cleanup {{ logstash_tmp_tgz }}
       become: yes
       become_user: root
       file:
-        path: /tmp/{{ logstash_tgz }}
+        path: '{{ logstash_tmp_tgz }}'
         state: absent
 
-- name: link...
+- name: linking {{ logstash_link_dir }} to {{ logstash_install_dir }}
   become: yes
   become_user: root
   file:
@@ -49,7 +49,7 @@
     dest: '{{ logstash_link_dir }}'
     state: link
 
-- name: add to default path...
+- name: adding to default path...
   become: yes
   become_user: root
   with_items:
