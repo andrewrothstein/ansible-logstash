@@ -1,5 +1,5 @@
 ---
-logstash_ver: '7.4.2'
+logstash_ver: 7.9.3
 logstash_mirror: https://artifacts.elastic.co/downloads/logstash
 
 logstash_parent_install_dir: /usr/local
@@ -52,3 +52,5 @@ logstash_checksums:
   '7.4.1': sha512:c89d530f16e5c6953d97708b6ff2f46bbb518a93652f11cad988841a73bf5862beb4a5326de1e63d0ffb65a498fc33235ab4fc950e8087aed5815b3a65e81ef6
   # https://artifacts.elastic.co/downloads/logstash/logstash-7.4.2.tar.gz.sha512
   '7.4.2': sha512:3ffedd75ad1137565cbb5f13e1c65113d58d4ba49e70d64d287421fe0cb2f71bd81d27a5b5cb9c52fbf513ef5bd6de582ba7db7268ba2c5d910712b51d4409b1
+  # https://artifacts.elastic.co/downloads/logstash/logstash-7.9.3.tar.gz.sha512
+  '7.9.3': sha512:f4bfc97203bcad589d3682a4dfd8f7e6172efa958775541b128f43b151cedf4065b1eab012d60a8aa5005dbb504e4c3638a26492c30fba3ba5b271ad17876f25
