@@ -1,5 +1,5 @@
 ---
-logstash_ver: 7.10.2
+logstash_ver: 7.11.0
 logstash_mirror: https://artifacts.elastic.co/downloads/logstash
 logstash_os: linux
 logstash_arch: x86_64
@@ -20,3 +20,10 @@ logstash_checksums:
     darwin-x86_64: sha512:9e7ff014aedf2788057d3e86daf3b3c50be6f74a2f795cfd95f1b2b16226555a2654a39bbd4cb88f9eb54b8b68d13673907458518946ee7f46d31e4f6495e6ff
     # https://artifacts.elastic.co/downloads/logstash/logstash-7.10.2-windows-x86_64.zip.sha512
     windows-x86_64: sha512:0ff392a933b29706dc9d9ccb98dff87a5fb7a9630dacb95c3f24de7ef290e56684cac330581579baae2e66b53d3aeea1cebd70d89bbcedcb8ff9cf34930ab0c0
+  '7.11.0':
+    # https://artifacts.elastic.co/downloads/logstash/logstash-7.11.0-linux-x86_64.tar.gz.sha512
+    linux-x86_64: sha512:ecebfc4c7f47fd93e2915e85028d6f8d0d17c4993cf71048343ba0f3bf2e3be757bddb9715413fc3395fd6b56ccddadbf617df27f3c7c7ca1db22304fa4969f3
+    # https://artifacts.elastic.co/downloads/logstash/logstash-7.11.0-darwin-x86_64.tar.gz.sha512
+    darwin-x86_64: sha512:37b663dcc7f92a9d65e59fd7b618adb22860ebe533317a565d850b4a8bc3f7a6ff4ac2572b534a43caff7aafb4244e55ee538d682dcd11f882e7882fb7351f70
+    # https://artifacts.elastic.co/downloads/logstash/logstash-7.11.0-windows-x86_64.zip.sha512
+    windows-x86_64: sha512:45a71c65bbe752147df8ea331a362152374fc5156e467cd8b6f657ba5498f9aab3eadee1de7b45a997ea71974ba5f0fe9e96eaa9e864926408499fe74fd15895
