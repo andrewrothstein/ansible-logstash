@@ -1,8 +1,7 @@
+---
 dependencies:
-- role: andrewrothstein.bash
-  version: v1.1.8
-- role: andrewrothstein.unarchive-deps
-  version: v1.2.1
+- andrewrothstein.bash
+- andrewrothstein.unarchive-deps
 galaxy_info:
   author: Andrew Rothstein
   company: BlackRock
@@ -25,8 +24,8 @@ galaxy_info:
     - 8
   - name: Fedora
     versions:
-    - 34
     - 35
+    - 36
   - name: Ubuntu
     versions:
     - bionic
