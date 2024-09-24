@@ -1,6 +1,9 @@
 ---
-- name: resolve platform specific vars
-  include_vars: '{{ item }}'
+- name: Installing andrewrothstein.bash
+  ansible.builtin.include_role:
+    name: andrewrothstein.bash
+- name: Resolve platform specific vars
+  ansible.builtin.include_vars: '{{ item }}'
   with_first_found:
     - files:
         - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
@@ -9,53 +12,57 @@
       skip: true
       paths:
         - '{{ role_path }}/vars'
-- name: checking for logstash installation in {{ logstash_install_dir }}
-  become: yes
-  stat:
+- name: Checking for logstash installation in {{ logstash_install_dir }}
+  become: true
+  ansible.builtin.stat:
     path: '{{ logstash_install_dir }}'
   changed_when: false
   register: logstash_binary_dir
-- when: not logstash_binary_dir.stat.exists
+- name: Downloading and installing...
+  when: not logstash_binary_dir.stat.exists
   block:
-    - name: downloading {{ logstash_tgz_url }}
-      become: yes
+    - name: Downloading {{ logstash_tgz_url }}
+      become: true
       become_user: root
-      get_url:
+      ansible.builtin.get_url:
         url: '{{ logstash_tgz_url }}'
         dest: '{{ logstash_tmp_tgz }}'
         checksum: '{{ logstash_checksum }}'
-        mode: 0644
-    - name: unarchiving to {{ logstash_parent_install_dir }}
-      become: yes
+        mode: '644'
+    - name: Installing andrewrothstein.unarchivedeps
+      ansible.builtin.include_role:
+        name: andrewrothstein.unarchivedeps
+    - name: Unarchiving to {{ logstash_parent_install_dir }}
+      become: true
       become_user: root
-      unarchive:
-        remote_src: yes
+      ansible.builtin.unarchive:
+        remote_src: true
         src: '{{ logstash_tmp_tgz }}'
         dest: '{{ logstash_parent_install_dir }}'
         creates: '{{ logstash_install_dir }}'
   always:
-    - name: cleanup {{ logstash_tmp_tgz }}
-      become: yes
+    - name: Cleanup {{ logstash_tmp_tgz }}
+      become: true
       become_user: root
-      file:
+      ansible.builtin.file:
         path: '{{ logstash_tmp_tgz }}'
         state: absent
 
-- name: linking {{ logstash_link_dir }} to {{ logstash_install_dir }}
-  become: yes
+- name: Linking {{ logstash_link_dir }} to {{ logstash_install_dir }}
+  become: true
   become_user: root
-  file:
+  ansible.builtin.file:
     src: '{{ logstash_install_dir }}'
     dest: '{{ logstash_link_dir }}'
     state: link
 
-- name: adding to default path...
-  become: yes
+- name: Adding to default path...
+  become: true
   become_user: root
   with_items:
     - f: logstash.sh
       d: /etc/profile.d
-  template:
+  ansible.builtin.template:
     src: '{{ item.f }}.j2'
     dest: '{{ item.d }}/{{ item.f }}'
-    mode: '{{ item.m|default("0644") }}'
+    mode: '{{ item.m | default("644") }}'

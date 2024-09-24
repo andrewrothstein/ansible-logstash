@@ -1,8 +1,10 @@
 ---
-logstash_platform: '{{logstash_os }}-{{ logstash_arch }}'
+logstash_os: '{{ ansible_system | lower }}'
+logstash_arch: '{{ ansible_architecture }}'
+logstash_platform: '{{ logstash_os }}-{{ logstash_arch }}'
 logstash_name: logstash-{{ logstash_ver }}
 logstash_tgz: '{{ logstash_name }}-{{ logstash_platform }}.tar.gz'
-logstash_tmp_tgz: /tmp/{{ logstash_tgz }}
+logstash_tmp_tgz: '{{ logstash_tmp_dir | default("/tmp") }}/{{ logstash_tgz }}'
 logstash_tgz_url: '{{ logstash_mirror }}/{{ logstash_tgz }}'
 logstash_checksum: '{{ logstash_checksums[logstash_ver][logstash_platform] }}'
 
